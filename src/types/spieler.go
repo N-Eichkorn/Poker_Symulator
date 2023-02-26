@@ -3,9 +3,11 @@ package types
 import "errors"
 
 type Spieler struct {
-	Name     string
-	Guthaben float64
-	Karten   [2]Karte
+	Name     string   // Name des Spielers
+	Guthaben float64  // Kontostand des Spielers
+	Karten   [2]Karte // Karten des Spielers
+	Status   bool     // true = Spieler ist aktiver Spieler
+	// false = Spieler ist ausgeschieden
 }
 
 func (s *Spieler) GuthabenVerringern(wert float64) error {
