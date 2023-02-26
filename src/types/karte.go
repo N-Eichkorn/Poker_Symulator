@@ -31,3 +31,6 @@ type Karte struct {
 	Färbung    Farbe
 	Wertigkeit Wert
 }
+
+type Kartendeck struct {
+}
