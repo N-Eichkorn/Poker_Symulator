@@ -3,16 +3,16 @@ package main
 import (
 	t "Poker_Symulator/src/types"
 	"fmt"
-	"math/rand"
 )
 
 func main() {
-	fmt.Println("hallo welt")
-	fmt.Println(t.Karte{Färbung: t.Herz, Wertigkeit: t.Zwei})
+	p := t.NewPartie()
 
-	//p := t.NewGame()
+	s := t.Spieler{Name: "Niklas", Guthaben: 50.0, Status: true}
 
-	fmt.Print(rand.Intn(100), ",")
-	fmt.Print(rand.Intn(100))
-	fmt.Println()
+	k1, k2 := p.GetSpielerkarte(s.Name)
+
+	fmt.Println(k1)
+	fmt.Println(k2)
+	fmt.Println(p)
 }

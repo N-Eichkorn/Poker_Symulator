@@ -30,8 +30,8 @@ const (
 type Karte struct {
 	Färbung       Farbe
 	Wertigkeit    Wert
-	Zugehörigkeit int8 // Zugehörigkeit ist die Spielernummer. Wem gehört diese Karte gerade.
-	// -1 ist Niemand und die Karte befindet sich im Deck.
-	// 0 ist der Tisch und die Karte befindet sich in den Gemeinschaftskarten.
-	// >0 ist die Nummer des Spielers, der die Karte besitzt.
+	Zugehörigkeit string // Zugehörigkeit ist der Spielername. Wem gehört diese Karte gerade.
+	// "Deck" ist Niemand und die Karte befindet sich im Deck.
+	// "Tisch" ist der Tisch und die Karte befindet sich in den Gemeinschaftskarten.
+	// Alles andere ist der Name des Spielers, der die Karte besitzt.
 }

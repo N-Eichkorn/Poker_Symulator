@@ -1,13 +1,17 @@
 package types
 
-import "math/rand"
+import (
+	"math/rand"
+)
 
 type Partie struct {
-	SpielerListe []Spieler
+	SpielerListe map[string]Spieler
 	Karten       []Karte
+	BigBlind     float64
+	SmalBlind    float64
 }
 
-func NewGame() *Partie {
+func NewPartie() *Partie {
 	p := new(Partie)
 	p.Karten = []Karte{
 		{Färbung: Herz, Wertigkeit: Zwei},
@@ -66,12 +70,38 @@ func NewGame() *Partie {
 	return p
 }
 
-func (p *Partie) GetSpielerkarte() (Karte, Karte) {
-	var k1 Karte
-	var k2 Karte
+func (p *Partie) GetSpielerkarte(spielername string) (Karte, Karte) {
 
-	for id, k := range p.Karten {
-		random1 := rand.Intn(len(p.Karten) - 1)
-		random2 := rand.Intn(len(p.Karten) - 1)
+	var fehler bool = true
+	var vergebeneKarten []int
+	var random1 int
+	var random2 int
+
+	for fehler {
+		fehler = false
+		random1 = rand.Intn(len(p.Karten) - 1)
+		random2 = rand.Intn(len(p.Karten) - 1)
+		if random1 == random2 {
+			fehler = true
+		}
+		for _, v := range vergebeneKarten {
+			if random1 == v || random2 == v {
+				fehler = true
+			}
+		}
 	}
+	karte1 := &p.Karten[random1]
+	karte2 := &p.Karten[random2]
+
+	karte1.Zugehörigkeit = p.SpielerListe[spielername].Name
+	karte2.Zugehörigkeit = p.SpielerListe[spielername].Name
+
+	k1 := *karte1
+	k2 := *karte2
+
+	return k1, k2
+}
+
+func (p *Partie) SpielerHinzufügen(name string, guthaben float64) {
+	p.SpielerListe[name] = Spieler{Name: name, Guthaben: guthaben, Status: true}
 }
