@@ -1,5 +1,7 @@
 package types
 
+import "math/rand"
+
 type Partie struct {
 	SpielerListe []Spieler
 	Karten       []Karte
@@ -62,4 +64,14 @@ func NewGame() *Partie {
 		{Färbung: Pik, Wertigkeit: Ass},
 	}
 	return p
+}
+
+func (p *Partie) GetSpielerkarte() (Karte, Karte) {
+	var k1 Karte
+	var k2 Karte
+
+	for id, k := range p.Karten {
+		random1 := rand.Intn(len(p.Karten) - 1)
+		random2 := rand.Intn(len(p.Karten) - 1)
+	}
 }
