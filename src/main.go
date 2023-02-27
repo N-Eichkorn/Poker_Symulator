@@ -8,4 +8,6 @@ import (
 func main() {
 	fmt.Println("hallo welt")
 	fmt.Println(t.Karte{Färbung: t.Herz, Wertigkeit: t.Zwei})
+
+	p := t.NewGame()
 }
