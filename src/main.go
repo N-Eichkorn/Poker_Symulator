@@ -9,10 +9,11 @@ func main() {
 	p := t.NewPartie()
 
 	s := t.Spieler{Name: "Niklas", Guthaben: 50.0, Status: true}
-	p.SpielerHinzufügen(s)
-	//k1, k2 := p.GetSpielerkarte(s.Name)
+	s1 := p.SpielerHinzufügen(s)
 
-	//fmt.Println(k1)
-	//fmt.Println(k2)
+	fmt.Println(p)
+
+	p.SpielerEntfernen(s1)
+
 	fmt.Println(p)
 }

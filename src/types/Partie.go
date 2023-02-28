@@ -110,6 +110,6 @@ func (p *Partie) SpielerHinzufügen(s Spieler) *Spieler {
 	return &s
 }
 
-func (p *Partie) SpielerEntfernen(s Spieler) {
+func (p *Partie) SpielerEntfernen(s *Spieler) {
 	delete(p.SpielerListe, s.Name)
 }
