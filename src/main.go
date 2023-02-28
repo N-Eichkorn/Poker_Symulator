@@ -7,9 +7,9 @@ import (
 
 func main() {
 	p := t.NewPartie()
-	
+
 	s := t.Spieler{Name: "Niklas", Guthaben: 50.0, Status: true}
-	p.SpielerHinzufügen(&s)
+	p.SpielerHinzufügen(s)
 	//k1, k2 := p.GetSpielerkarte(s.Name)
 
 	//fmt.Println(k1)

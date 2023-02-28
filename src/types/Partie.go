@@ -67,6 +67,7 @@ func NewPartie() *Partie {
 		{Färbung: Pik, Wertigkeit: König, Zugehörigkeit: "Deck"},
 		{Färbung: Pik, Wertigkeit: Ass, Zugehörigkeit: "Deck"},
 	}
+	p.SpielerListe = make(map[string]Spieler)
 	return p
 }
 
@@ -102,11 +103,13 @@ func (p *Partie) GetSpielerkarte(spielername string) (Karte, Karte) {
 	return k1, k2
 }
 
-func (p *Partie) SpielerHinzufügen(s *Spieler) {
-	p.SpielerListe[s.Name] = *s
+func (p *Partie) SpielerHinzufügen(s Spieler) *Spieler {
+	name := s.Name
+	p.SpielerListe[name] = s
+
+	return &s
 }
 
-func (p *Partie) SpielerEntfernen(s Spieler){
+func (p *Partie) SpielerEntfernen(s Spieler) {
 	delete(p.SpielerListe, s.Name)
 }
-
