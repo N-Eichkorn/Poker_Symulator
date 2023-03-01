@@ -27,6 +27,11 @@ const (
 	Ass    Wert = 14
 )
 
+const (
+	Deck  string = "Deck"
+	Tisch string = "Tisch"
+)
+
 type Karte struct {
 	Färbung       Farbe
 	Wertigkeit    Wert
