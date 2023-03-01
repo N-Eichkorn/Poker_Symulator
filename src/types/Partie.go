@@ -71,6 +71,7 @@ func NewPartie() *Partie {
 	return p
 }
 
+// Teile einem Spieler zwei Karten aus
 func (p *Partie) GetSpielerkarte(spielername string) (Karte, Karte) {
 
 	var fehler bool = true
@@ -103,6 +104,8 @@ func (p *Partie) GetSpielerkarte(spielername string) (Karte, Karte) {
 	return k1, k2
 }
 
+// Füge einen Spieler zu dieser Partie hinzu und gibt eine Referenz zu diesem
+// Spieler zurück
 func (p *Partie) SpielerHinzufügen(s Spieler) *Spieler {
 	name := s.Name
 	p.SpielerListe[name] = s
@@ -110,6 +113,12 @@ func (p *Partie) SpielerHinzufügen(s Spieler) *Spieler {
 	return &s
 }
 
+// Entfernt einen Spieler aus diesem Spiel
 func (p *Partie) SpielerEntfernen(s *Spieler) {
 	delete(p.SpielerListe, s.Name)
+}
+
+// Legt eine Karte auf den Tisch
+func (p *Partie) GemeinschaftskarteAusteilen() Karte {
+	// To-Do
 }

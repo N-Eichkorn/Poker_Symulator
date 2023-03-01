@@ -9,7 +9,7 @@
 - Spieler zu einer Partie hinzufügen
 - Spieler vom einer Partie ausschliessen
 - Karten austeilen
-- Gemeinschaftkarten austeilen
+- Gemeinschaftkarte legen
 - Big Blind erhöhen
 - Smal Blind erhöhen
 - Runden Zählen
