@@ -124,9 +124,9 @@ func (p *Partie) SpielerEntfernen(s *Spieler) {
 // Legt eine Karte auf den Tisch
 func (p *Partie) GemeinschaftskarteAusteilen() Karte {
 	var freieKarten []*Karte
-	for _, v := range p.Karten {
-		if v.Zugehörigkeit == Deck {
-			freieKarten = append(freieKarten, &v)
+	for i := 0; i < len(p.Karten); i++ {
+		if p.Karten[i].Zugehörigkeit == Deck {
+			freieKarten = append(freieKarten, &p.Karten[i])
 		}
 	}
 	len := len(freieKarten)
