@@ -135,3 +135,11 @@ func (p *Partie) GemeinschaftskarteAusteilen() Karte {
 	karte.Zugehörigkeit = Tisch
 	return *karte
 }
+
+func (p *Partie) BigBlindErhoehen() {
+	p.BigBlind = p.BigBlind + 1
+}
+
+func (p *Partie) SmalBlindErhoehen() {
+	p.SmalBlind = p.SmalBlind + 1
+}
