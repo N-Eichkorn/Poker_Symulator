@@ -2,6 +2,7 @@ package types
 
 import (
 	"math/rand"
+	"time"
 )
 
 type Partie struct {
@@ -79,6 +80,8 @@ func (p *Partie) GetSpielerkarte(spielername string) (Karte, Karte) {
 	var random1 int
 	var random2 int
 
+	rand.Seed(time.Now().UnixNano())
+
 	for fehler {
 		fehler = false
 		random1 = rand.Intn(len(p.Karten) - 1)
@@ -126,7 +129,8 @@ func (p *Partie) GemeinschaftskarteAusteilen() Karte {
 			freieKarten = append(freieKarten, &v)
 		}
 	}
-	random := rand.Intn(len(freieKarten) - 1)
+	len := len(freieKarten)
+	random := rand.Intn(len - 1)
 	karte := freieKarten[random]
 	karte.Zugehörigkeit = Tisch
 	return *karte
