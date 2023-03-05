@@ -9,9 +9,10 @@ func main() {
 	p := t.NewPartie()
 
 	s := t.Spieler{Name: "Niklas", Guthaben: 50.0, Status: true}
-	s1 := p.SpielerHinzufügen(s)
+	p.SpielerHinzufügen(s)
 	//fmt.Println(*s1)
-	fmt.Println(p.GetSpielerkarte(s1.Name))
-	fmt.Println(p.GemeinschaftskarteAusteilen())
+	p.PottErhoehen(100)
+	s = p.PottAuszahlen(s)
 	fmt.Println(p)
+	fmt.Println(s)
 }

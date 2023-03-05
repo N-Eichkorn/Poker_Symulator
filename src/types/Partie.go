@@ -10,6 +10,7 @@ type Partie struct {
 	Karten       [52]Karte
 	BigBlind     float64
 	SmalBlind    float64
+	Pott         float64
 }
 
 func NewPartie() *Partie {
@@ -109,11 +110,10 @@ func (p *Partie) GetSpielerkarte(spielername string) (Karte, Karte) {
 
 // Füge einen Spieler zu dieser Partie hinzu und gibt eine Referenz zu diesem
 // Spieler zurück
-func (p *Partie) SpielerHinzufügen(s Spieler) *Spieler {
+func (p *Partie) SpielerHinzufügen(s Spieler) {
 	name := s.Name
 	p.SpielerListe[name] = s
 
-	return &s
 }
 
 // Entfernt einen Spieler aus diesem Spiel
@@ -142,4 +142,16 @@ func (p *Partie) BigBlindErhoehen() {
 
 func (p *Partie) SmalBlindErhoehen() {
 	p.SmalBlind = p.SmalBlind + 1
+}
+
+func (p *Partie) PottErhoehen(input float64) {
+	p.Pott = p.Pott + input
+}
+
+func (p *Partie) PottAuszahlen(s Spieler) Spieler {
+	spieler := p.SpielerListe[s.Name]
+	spieler.Guthaben = spieler.Guthaben + p.Pott
+	p.Pott = 0
+	p.SpielerListe[s.Name] = spieler
+	return spieler
 }
