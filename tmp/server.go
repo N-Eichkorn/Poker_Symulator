@@ -33,11 +33,7 @@ func main() {
 	checkError(err)
 	listener, err := net.ListenTCP("tcp", tcpAddr)
 	checkError(err)
-	/* This works:
-	   rpc.Accept(listener)
-	*/
-	/* and so does this:
-	 */
+
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
@@ -53,3 +49,5 @@ func checkError(err error) {
 		os.Exit(1)
 	}
 }
+
+func serverHandling(conn ...)
